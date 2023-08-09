@@ -1,0 +1,43 @@
+export const Todoiimg = () => {
+      const [txt, setTxt] = useState("");
+      const [data, setData] = useState([]);
+      //   show     value pick
+      const handleAdd = () => {
+        setData([...data, txt]);
+      };
+      console.log(data);
+      return (
+        <Grid container spacing={2}>
+          <Grid item xs={2}></Grid>
+          <Grid item xs={6}>
+            <TextField
+              onChange={(e) => setTxt(e.target.value)}
+              variant="outlined"
+              fullWidth
+              label="Link Share..."
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <Button
+              onClick={handleAdd}
+              sx={{ height: 55 }}
+              variant="contained"
+              fullWidth
+            >
+              Download <DownloadingIcon />
+            </Button>
+          </Grid>
+          <Grid item xs={2}></Grid>
+    
+          {data.map((anyname) => (
+            <Grid item xs={3}>
+              <Card sx={{ textAlign: "center" }}>
+                <CardContent>
+                  <img src={anyname} alt="" width={250} height={250} />
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      );
+    };
